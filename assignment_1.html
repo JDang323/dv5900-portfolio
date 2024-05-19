@@ -49,17 +49,63 @@
 
 				<!-- Main -->
 					<div id="main">
-						<div class="inner">
+						<div class="main plot">
 							<h1>Assignment 1</h1>
 							<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
-							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel venenatis mauris vehicula hendrerit.</p>
-							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
-						</div>
-					</div>
+							<p>The dataset used in this assignment is the <a href = "https://www.kaggle.com/datasets/unsdsn/world-happiness" > World Happiness Reprot</a>. The data is used in order to help policy makers make decisions and policies. The scores and ranking use data from the Gallup World Poll. </p>
+							
+							<html>
+								<head>
+								  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+								  <script type="text/javascript">
+									// Load the Google Charts library
+									google.charts.load('current', {'packages':['corechart']});
+									google.charts.setOnLoadCallback(drawSheetName);
+								
+									function drawSheetName() {
+									  var queryString = encodeURIComponent('SELECT D, C ORDER BY D');
+								
+									  var query = new google.visualization.Query(
+										  'https://docs.google.com/spreadsheets/d/12ObGrbBou-yDUiacS0iLqlDEqNuMYKZE89W0kCh3GcY/gviz/tq?sheet=Sheet1&headers=1&tq=' + queryString);
+									  query.send(handleSampleDataQueryResponse);
+									}
+								
+									function handleSampleDataQueryResponse(response) {
+									  if (response.isError()) {
+										alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+										return;
+									  }
+								
+									  var data = response.getDataTable();
+									  var options = {
+										title: 'Happiness Score vs. GDP per Capita',
+										hAxis: {
+										  title: 'GDP per Capita'
+										},
+										vAxis: {
+										  title: 'Happiness Score'
+										},
+										height: 400,
+										legend: {
+										  position: 'top'
+										}
+									  };
+								
+									  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+									  chart.draw(data, options);
+									}
+								  </script>
+								</head>
+								<body>
+								  <div id="chart_div" style="width: 1200px; height: 500px"></div>
+								</body>
+								</html>
 
-					<div id="plot 1">
-						
+								<p>This is a line chart showing how the GDP per capita and the Happiness Score are related. Using a line chart makes it 
+									easier to see how the increase in GDP per capita correlates to a higher happiness score within a country. This is 
+									done so by being able to see an upward trend. Line charts are excellent visual for showing trends. Changing the color of the line or anything would
+									not add anything because it is only one line.</p>
+						</div>
 					</div>
 
 				<!-- Footer -->
