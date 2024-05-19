@@ -52,9 +52,65 @@
 						<div class="inner">
 							<h1>Assignment 1</h1>
 							<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
-							<p>The dataset used in this assignment is the <a href = "https://www.kaggle.com/datasets/unsdsn/world-happiness" > World Happiness Report</a>. The data is used in order to help policy makers make decisions and policies. The scores and ranking use data from the Gallup World Poll. </p>
+							<p>The dataset used in this assignment is the <a href = "https://www.kaggle.com/datasets/unsdsn/world-happiness" > World Happiness Report</a>. The data is used in order to help policy makers make decisions and policies. The scores and ranking use data from the Gallup World Poll. 
+							The subset of data that is used in this assignment is the GDP per Capita and the Happiness Score that are represented on the X-axis and Y-axis respectively.</p>
 							
-							<h2>Line Chart</h2>
+							<h2>Basic Plot - Line Chart</h2>
+							<html>
+								<head>
+								  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+								  <script type="text/javascript">
+									// Load the Google Charts library
+									google.charts.load('current', {'packages':['corechart']});
+									google.charts.setOnLoadCallback(drawSheetName);
+								
+									function drawSheetName() {
+									  var queryString = encodeURIComponent('SELECT D, C ORDER BY D');
+								
+									  var query = new google.visualization.Query(
+										  'https://docs.google.com/spreadsheets/d/12ObGrbBou-yDUiacS0iLqlDEqNuMYKZE89W0kCh3GcY/gviz/tq?sheet=Sheet1&headers=1&tq=' + queryString);
+									  query.send(handleSampleDataQueryResponse);
+									}
+								
+									function handleSampleDataQueryResponse(response) {
+									  if (response.isError()) {
+										alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+										return;
+									  }
+								
+									  var data = response.getDataTable();
+									  var options = {
+										title: 'GDP per Capita vs. Happiness Score',
+										hAxis: {
+										  title: 'GDP per Capita'
+										},
+										vAxis: {
+										  title: 'Happiness Score'
+										},
+										height: 400,
+										legend: {
+										  position: 'none'
+										}
+									  };
+								
+									  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+									  chart.draw(data, options);
+									}
+								  </script>
+								</head>
+								<body>
+								  <div id="chart_div" style="width: 1200px; height: 500px"></div>
+								</body>
+								</html>
+
+								<p>This is a line chart showing how the GDP per capita and the Happiness Score are related. Using a line chart makes it 
+									easier to see how the increase in GDP per capita correlates to a higher happiness score within a country. This is 
+									done so by being able to see an upward trend. Line charts are excellent visual for showing trends. Changing the color of the line would
+									not add anything because it is only one line. Keeping the blue default color is satisfactory given that the background is white and the line contrasts
+									well with it making easy to see. The removal of the legend was done so to save on space clutter. The legend wasn't needed because there is no other 
+									color or line that needs to be distinguished and the line itself already correlates to the two axis.</p>
+							
+							<h2>Variation 1 - Scatter Plot</h2>
 							<html>
 								<head>
 								  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -88,11 +144,12 @@
 										},
 										height: 400,
 										legend: {
-										  position: 'top'
-										}
+										  position: 'none'
+										},
+										dataOpacity: 0.6
 									  };
 								
-									  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+									  var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
 									  chart.draw(data, options);
 									}
 								  </script>
@@ -101,13 +158,14 @@
 								  <div id="chart_div" style="width: 1200px; height: 500px"></div>
 								</body>
 								</html>
+								
+								<p>The scatter plot aboves shows the GPD per capita vs. the Happiness score. This plot shows the individual data points from the subset of data.
+									Using the scatter plot makes it easy to see how all the data is distributed. For the same reason as the line chart, the legend was removed for decluttering
+									and simplicity sake. The data points on the graph have also been set to 60% opacity - doing so allows us to see individual data points in more cluttered
+									areas such as 1.2 - 1.4 GDP per capita. Using a scatter plot portrays the same message as the line chart but using a scatter plot shows that there are more
+									data points from 1.0 GDP per capita and onwards. This suggests that out of the 156 countries in the data, there are more higher GDPs than lower ones.
+								</p>
 
-								<p>This is a line chart showing how the GDP per capita and the Happiness Score are related. Using a line chart makes it 
-									easier to see how the increase in GDP per capita correlates to a higher happiness score within a country. This is 
-									done so by being able to see an upward trend. Line charts are excellent visual for showing trends. Changing the color of the line or anything would
-									not add anything because it is only one line.</p>
-							
-							<h2>Variation 1</h2>
 							<h2>Variation 2</h2>
 							<h2>Variation 3</h2>
 						</div>
