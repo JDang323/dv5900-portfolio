@@ -238,7 +238,7 @@
 				var options = {
 					title: 'Happiness Score vs. GDP per Capita',
 					hAxis: {
-						title: 'Happiness Score'
+						title: 'Happiness Score',
 						viewWindow: {
 							min: 2
 						}
@@ -251,7 +251,7 @@
 					legend: {
 						position: 'none'
 					},
-					dataOpacity: 0.6
+					dataOpacity: 0.8
 				};
 				var chart = new google.visualization.ScatterChart(document.getElementById('scatterplotFlipped_div'));
 				chart.draw(data, options);
