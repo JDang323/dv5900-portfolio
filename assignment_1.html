@@ -117,6 +117,7 @@
 			google.charts.load('current', {'packages':['corechart']});
 			google.charts.setOnLoadCallback(drawLineChart);
 			google.charts.setOnLoadCallback(drawScatterPlot);
+			google.charts.setOnLoadCallback(drawScatterPlotTrend);
 		
 			function drawLineChart() {
 				var queryString = encodeURIComponent('SELECT D, C ORDER BY D');
