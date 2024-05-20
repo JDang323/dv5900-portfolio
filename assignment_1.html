@@ -73,7 +73,7 @@
 							</p>
 
 							<h2>Variation 2 - Scatter Plot with Trendline</h2>
-							<div id="scatterplotTrendLine_div" style="width: 1000px; height: 500px"></div>
+							<div id="scatterplotTrendLine_div" style="width: 1200px; height: 500px"></div>
 							<p>The scatter plot above shows the GDP per capita vs. the Happiness Score with a trendline. Much like the previous scatter plot, it shows the individual data points
 								which allows us to see how all the data is distributed. This difference in this chart is the trendline that was added. This added trendline allows for intrepretation
 								for how the GDP per capita compares against the Happiness Score. If there is no data point for a specific GDP per capita or Happiness Score, the trendline can be used
@@ -82,7 +82,13 @@
 								for the given GDP per capita. I have increased the opacity of the points back to 100% because the focus is moreso on the trendline and it's use.
 							</p>
 							
-							<h2>Variation 3</h2>
+							<h2>Variation 3 - Flipped Scatter Plot with Different Color</h2>
+							<div id="scatterplotFlipped_div" style="width: 1200px; height: 500px"></div>
+							<p>The scatter plot above shows the Happiness Score vs. The GDP per capita with a trendline. The difference for this plot vs. the others is that the axis
+								have been flipped. The X-axis represents the Happiness Score while the Y-axis represents the GDP per Capita. I flipped the axis because I wanted the focus
+								to be towards the changning Happiness Score. We can still see that, generally, as the Happiness Score increases, so does the GDP per capita. I also changed
+								the color of the data points and the trendline to orange because it is generally associated with happiness.
+							</p>
 						</div>
 					</div>
 
@@ -118,6 +124,7 @@
 			google.charts.setOnLoadCallback(drawLineChart);
 			google.charts.setOnLoadCallback(drawScatterPlot);
 			google.charts.setOnLoadCallback(drawScatterPlotTrend);
+			google.charts.setOnLoadCallback(drawScatterPlotFlipped);
 		
 			function drawLineChart() {
 				var queryString = encodeURIComponent('SELECT D, C ORDER BY D');
@@ -163,7 +170,7 @@
 				}
 				var data = response.getDataTable();
 				var options = {
-					title: 'Happiness Score vs. GDP per Capita',
+					title: 'GDP per Capita vs. Happiness Score',
 					hAxis: {
 						title: 'GDP per Capita'
 					},
@@ -196,7 +203,7 @@
 			
 				var data = response.getDataTable();
 				var options = {
-				title: 'Happiness Score vs. GDP per Capita',
+				title: 'GDP per Capita vs. Happiness Score',
 				hAxis: {
 					title: 'GDP per Capita'
 				},
@@ -214,6 +221,41 @@
 				var chart = new google.visualization.ScatterChart(document.getElementById('scatterplotTrendLine_div'));
 				chart.draw(data, options);
 				}
+
+			function drawScatterPlotFlipped() {
+				var queryString = encodeURIComponent('SELECT C, D ORDER BY C');
+				var query = new google.visualization.Query(
+					'https://docs.google.com/spreadsheets/d/12ObGrbBou-yDUiacS0iLqlDEqNuMYKZE89W0kCh3GcY/gviz/tq?sheet=Sheet1&headers=1&tq=' + queryString);
+				query.send(handleScatterPlotFlippedDataResponse);
+			}
+		
+			function handleScatterPlotFlippedDataResponse(response) {
+				if (response.isError()) {
+					alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+					return;
+				}
+				var data = response.getDataTable();
+				var options = {
+					title: 'Happiness Score vs. GDP per Capita',
+					hAxis: {
+						title: 'Happiness Score'
+						viewWindow: {
+							min: 2
+						}
+					},
+					vAxis: {
+						title: 'GDP per Capitra'
+					},
+					height: 400,
+					trendlines: { 0: {} },
+					legend: {
+						position: 'none'
+					},
+					dataOpacity: 0.6
+				};
+				var chart = new google.visualization.ScatterChart(document.getElementById('scatterplotFlipped_div'));
+				chart.draw(data, options);
+			}
 
 		</script>
 	</body>
