@@ -65,14 +65,23 @@
 							
 							<h2>Variation 1 - Scatter Plot</h2>
 							<div id="scatterplot_div" style="width: 1200px; height: 500px"></div>
-							<p>The scatter plot aboves shows the GPD per capita vs. the Happiness score. This plot shows the individual data points from the subset of data.
+							<p>The scatter plot aboves shows the GDP per capita vs. the Happiness score. This plot shows the individual data points from the subset of data.
 								Using the scatter plot makes it easy to see how all the data is distributed. For the same reason as the line chart, the legend was removed for decluttering
 								and simplicity sake. The data points on the graph have also been set to 60% opacity - doing so allows us to see individual data points in more cluttered
 								areas such as 1.2 - 1.4 GDP per capita. Using a scatter plot portrays the same message as the line chart but using a scatter plot shows that there are more
 								data points from 1.0 GDP per capita and onwards. This suggests that out of the 156 countries in the data, there are more higher GDPs than lower ones.
 							</p>
 
-							<h2>Variation 2</h2>
+							<h2>Variation 2 - Scatter Plot with Trendline</h2>
+							<div id="scatterplotTrendLine_div" style="width: 1000px; height: 500px"></div>
+							<p>The scatter plot above shows the GDP per capita vs. the Happiness Score with a trendline. Much like the previous scatter plot, it shows the individual data points
+								which allows us to see how all the data is distributed. This difference in this chart is the trendline that was added. This added trendline allows for intrepretation
+								for how the GDP per capita compares against the Happiness Score. If there is no data point for a specific GDP per capita or Happiness Score, the trendline can be used
+								to predict which GDP correlates with a specific happiness score and vice versa. The trendline can also be used to analyze the existing data points. Anything above the
+								trendline suggest that they have a higher happiness score for the given GDP per capita. If they are below the trendline, it suggests the happiness score is lower 
+								for the given GDP per capita. I have increased the opacity of the points back to 100% because the focus is moreso on the trendline and it's use.
+							</p>
+							
 							<h2>Variation 3</h2>
 						</div>
 					</div>
@@ -169,6 +178,42 @@
 				var chart = new google.visualization.ScatterChart(document.getElementById('scatterplot_div'));
 				chart.draw(data, options);
 			}
+
+			function drawScatterPlotTrend() {
+				var queryString = encodeURIComponent('SELECT D, C ORDER BY D');
+			
+				var query = new google.visualization.Query(
+					'https://docs.google.com/spreadsheets/d/12ObGrbBou-yDUiacS0iLqlDEqNuMYKZE89W0kCh3GcY/gviz/tq?sheet=Sheet1&headers=1&tq=' + queryString);
+				query.send(handleScatterPlotTrendDataResponse);
+				}
+			
+			function handleScatterPlotTrendDataResponse(response) {
+				if (response.isError()) {
+				alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+				return;
+				}
+			
+				var data = response.getDataTable();
+				var options = {
+				title: 'Happiness Score vs. GDP per Capita',
+				hAxis: {
+					title: 'GDP per Capita'
+				},
+				vAxis: {
+					title: 'Happiness Score'
+				},
+				height: 400,
+				trendlines: { 0: {} },
+				legend: {
+					position: 'none'
+				},
+				dataOpacity: 1
+				};
+			
+				var chart = new google.visualization.ScatterChart(document.getElementById('scatterplotTrendLine_div'));
+				chart.draw(data, options);
+				}
+
 		</script>
 	</body>
 </html>
