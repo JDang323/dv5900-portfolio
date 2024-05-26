@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>CSI5900 - Assignment 2 </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<!-- Libraries for Vega-Lite-->
+		<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/datavizLogo.png" alt="" /></span><span class="title">CSI 5900 : Data Visualization</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="generic.html">Ipsum veroeros</a></li>
+							<li><a href="generic.html">Tempus etiam</a></li>
+							<li><a href="generic.html">Consequat dolor</a></li>
+							<li><a href="elements.html">Elements</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Assignment 2</h1>
+							<p>This assignment is the Visualization Makeover. We were tasked to find a real life problematic visualization and create a 
+								new version that addresses the issues in the original. Vega-Lite is used for this assignment. The dataset
+								used is from the <a href = "https://sabr.org/bioproj/topic/baseball-demographics-1947-2016/" > Society For American Baseball Research. </a>
+								The specific dataset we are going to be looking at is <a href = "https://sabr.org/bioproj/topic/baseball-demographics-1947-2016/"> Baseball Demographics, 1974-2016.</a>
+							</p>
+
+							<h2>Original Plot</h2>
+							<span class="image">
+								<img src="images\MLB-Demographics-Armour-Levitt-Figure1.png" alt="" />
+							</span>
+							<p>
+								I chose this graph as a representation of what a problematic visualization looks like. The original data above is a 
+								stacked bar chart showing the percentage of baseball players by ethnicity from 1947 to 2016, with the ethnicities 
+								being White, African American, Latino and Asian.
+
+								The first problem with the visualization is its clarity. The stacked bar chart makes it challenging to distinguish between
+								the different ethnic groups, especially when graphed yearly between 1947 and 2016. It is also difficult to see smaller
+								segments of ethniciites such as Asian. The color scheme used also makes it difficult to see the different segments.
+
+								The next problem is the density of the data. It is packed with a lot of data yearly for over 60 years, which can be 
+								overwhelming. The gridlines in the origianl visual is hard to see as well which can make analyzing the data difficult.
+
+								The last problem is the legend placement. The legend is placed over the data, which can obscure any important information.
+								It is usually best practice to keep the legend from interferring with the data itself.
+							</p>
+							<h3>New Plot</h3>
+							<div id="new_plot"></div>
+							<p>
+								In the updating of the original visualization, the goal was to improve the clarity and accessibility. 
+								I chose to use an area chart format because it is able to better display the trends over time when comparing
+								the different ethnic groups. It is a lot easier to distinguish between the ethnic groups now since they are in the
+								area chart format. I also changed the collor palette to ensure that the colors are more easily distinguished and that they are 
+								color-blind friendly. Even as a non-color blind person, the original graph was hard to distinguish the colors. Adding gridlines
+								to the new graph also enhances the readability and allows the viewers to follow the changes and understand the data at 
+								specific points on the visualization. The legend was also moved to be next to the graph instead of on top of it so that it does not
+								block any data.
+							</p>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="https://github.com/JDang323/dv5900-portfolio" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+			<script>
+				// JSON data for Vega-Lite specification
+				const spec = {
+					"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+					"description": "Percentage of Baseball Players by Ethnicity: 1946 - 2016",
+					"title": {
+						"text": "Percentage of Baseball Players by Ethnicity between 1947 and 2016",
+						"anchor": "start",
+						"color": "black",
+						"fontSize": 20,
+						"fontWeight": "bold",
+						"offset": 10,
+						"frame": "group"
+					},
+					"data": {
+						"url": "https://raw.githubusercontent.com/JDang323/dv5900-portfolio/main/baseball.csv",
+						"format": {"type": "csv"}
+					},
+					"transform": [
+						{"fold": ["WHITE", "AFRICAN AMERICAN", "LATINO", "ASIAN"], "as": ["Ethnicity", "Percentage"]}
+					],
+					"mark": {"type": "area", "opacity": 0.7},
+					"encoding": {
+						"x": {
+						"field": "YEAR",
+						"type": "temporal",
+						"title": "Year",
+						"axis": {"grid": true}
+						},
+						"y": {
+						"field": "Percentage",
+						"type": "quantitative",
+						"stack": "normalize",
+						"title": "Percentage",
+						"axis": {"grid": true}
+						},
+						"color": {
+						"field": "Ethnicity",
+						"type": "nominal",
+						"legend": {
+							"title": "Ethnicity",
+							"titleFontSize": 16,
+							"labelFontSize": 14,
+							"symbolSize": 100
+						},
+						"scale": {"range": ["#1f77c4", "#ff8f0e", "#2cb02c", "#c62728"]}
+						}
+					},
+					"width": 800,
+					"height": 400
+				};
+			
+				// Embed the visualization in the container with the id `vis`
+				vegaEmbed('#new_plot', spec).catch(console.error);
+			</script>
+			
+
+	</body>
+</html>
