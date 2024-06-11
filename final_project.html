@@ -6,11 +6,26 @@
 -->
 <html>
 	<head>
-		<title>Final Project</title>
+		<title>Final Project - Not Just A Cartoon: Anime Trends</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			#search-results {
+				max-height: 600px; /* Adjust the height as needed */
+				overflow-y: auto;
+				border: 1px solid #ccc; /* Optional: Add a border */
+				padding: 10px; /* Optional: Add some padding */
+				margin-top: 10px; /* Optional: Add some margin on top */
+			}
+			.anime {
+				margin-bottom: 20px; /* Space between anime items */
+			}
+			.anime img {
+				max-width: 100%; /* Make images responsive */
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 		<!-- Wrapper -->
@@ -50,11 +65,54 @@
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<h1>Generic Page</h1>
-							<!-- <span class="image main"><img src="images/pic13.jpg" alt="" /></span> -->
-							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel venenatis mauris vehicula hendrerit.</p>
-							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+							<h1>Not Just A Cartoon: Anime Trends</h1>
+							<span class="image main"><img src="images/anime_banner.jpg" alt="" /></span>
+							
+							<!-- Introduction Section -->
+							<section class="section" id="introduction">
+								<header>
+									<h2>Introduction</h2>
+								</header>
+							</section>
+							<p>
+								Welcome to "Not Just A Cartoon: Anime Trends", an interactive data Visualization project that dives into the beautiful world of anime.
+								Anime has been a growing industry with a wide variety of shows, genres, studios, stories, characters and much more. 
+								Through a series of insightful, engaging, and clear data visualizations, this project explores various aspects of the anime industry,
+								including genre popularity and trends over time, release patterns, audience ratings and the intricate web of anime productions.
+								This project aims at both ends of the spectrum when it comes to its target audience. Whether you're a devoted anime fan or a newcomer, I aim 
+								to provide a deeper understanding of how anime ahs evolved and what factors contribute to the growing appeal. Join me on this daat-driven journey
+								to uncover the trends and stories behind your favorite anime series.
+							</p>
+
+							<!--Library of anime using the API-->
+							<section class="section" id="anime-library">
+								<header>
+									<h2>Anime Library</h2>
+								</header>
+								<p>
+									Below is a basic anime search library that utilizes the Jikan API, which is an unofficial MyAnimeList API.
+									You can search for any anime that is on the MyAnimeList database. Each anime will be presented with its full name, image, 
+									genre, and synopsis.
+								</p>
+								<input type="text" id="anime-search" placeholder="Search for anime...">
+								<button id="search-button">Search</button>
+								<div id="search-results"></div>
+							</section>
+
+							<!--Power BI Visuals-->
+
+							<!--Genre Popularity Over Time-->
+
+							<!--Top-Rated Anime By Genre-->
+
+							<!--Seasonal Releases-->
+							
+							<!--Audience Ratings Distribution-->
+
+							<!--Popularity vs. Ratings-->
+
+							<!--Anime Production Insights-->
+
 						</div>
 					</div>
 
@@ -81,6 +139,59 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+			
+			// Search script Jikan API
+			<script>
+				$(document).ready(function() {
+					// Function to execute the search
+					function executeSearch() {
+						const query = $('#anime-search').val();
+						if (query) {
+							$.ajax({
+								url: `https://api.jikan.moe/v4/anime?q=${query}`,
+								method: 'GET',
+								success: function(data) {
+									const results = data.data;
+									$('#search-results').empty();
+									if (results.length > 0) {
+										results.forEach(anime => {
+											const genres = anime.genres.map(genre => genre.name).join(', ');
+											$('#search-results').append(`
+												<div class="anime">
+													<h3>${anime.title}</h3>
+													<p><strong>Genre:</strong> ${genres}</p>
+													<img src="${anime.images.jpg.image_url}" alt="${anime.title}" />
+													<p>${anime.synopsis}</p>
+												</div>
+											`);
+										});
+									} else {
+										$('#search-results').append('<p>No results found.</p>');
+									}
+									$('#search-results').scrollTop(0); // Scroll to the top of the results
+								},
+								error: function(error) {
+									$('#search-results').empty();
+									$('#search-results').append('<p>An error occurred while fetching data. Please try again later.</p>');
+								}
+							});
+						}
+					}
+			
+					// Click event for search button
+					$('#search-button').click(function() {
+						executeSearch();
+					});
+			
+					// Keypress event for search input
+					$('#anime-search').keypress(function(event) {
+						if (event.which === 13) { // Enter key pressed
+							executeSearch();
+						}
+					});
+				});
+			</script>
+			
 	</body>
 </html>
