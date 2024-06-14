@@ -80,7 +80,7 @@
 								Through a series of insightful, engaging, and clear data visualizations, this project explores various aspects of the anime industry,
 								including genre popularity and trends over time, release patterns, audience ratings and the intricate web of anime productions.
 								This project aims at both ends of the spectrum when it comes to its target audience. Whether you're a devoted anime fan or a newcomer, I aim 
-								to provide a deeper understanding of how anime ahs evolved and what factors contribute to the growing appeal. Join me on this daat-driven journey
+								to provide a deeper understanding of how anime has evolved and what factors contribute to the growing appeal. Join me on this data-driven journey
 								to uncover the trends and stories behind your favorite anime series.
 							</p>
 
@@ -100,6 +100,10 @@
 							</section>
 
 							<!--Power BI Visuals-->
+							<iframe title="Anime Information Dashboard Checkpoint" width="1400" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiNWNjNGEzNDMtNzIxNi00YzJhLWE2ODYtNDNiODcyZDcwYmI5IiwidCI6Ijk2NWRlODFjLWZjOTgtNGM1My05OTAxLTQxYmQ5M2UyNmUwNiIsImMiOjN9" frameborder="0" allowFullScreen="true"></iframe>
+							
+							<!--Anime Genre Makeup-->
+							<div class='tableauPlaceholder' id='viz1718336424310' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;An&#47;AnimeDashboard_17183311218600&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='AnimeDashboard_17183311218600&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;An&#47;AnimeDashboard_17183311218600&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718336424310');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
 
 							<!--Genre Popularity Over Time-->
 
@@ -141,7 +145,7 @@
 			<script src="assets/js/main.js"></script>
 			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 			
-			// Search script Jikan API
+			<!--// Search script Jikan API -->
 			<script>
 				$(document).ready(function() {
 					// Function to execute the search
@@ -157,9 +161,10 @@
 									if (results.length > 0) {
 										results.forEach(anime => {
 											const genres = anime.genres.map(genre => genre.name).join(', ');
+											const malLink = `https://myanimelist.net/anime/${anime.mal_id}`;
 											$('#search-results').append(`
 												<div class="anime">
-													<h3>${anime.title}</h3>
+													<h3><a href="${malLink}" target="_blank">${anime.title}</a></h3>
 													<p><strong>Genre:</strong> ${genres}</p>
 													<img src="${anime.images.jpg.image_url}" alt="${anime.title}" />
 													<p>${anime.synopsis}</p>
@@ -192,6 +197,7 @@
 					});
 				});
 			</script>
+			
 			
 	</body>
 </html>
