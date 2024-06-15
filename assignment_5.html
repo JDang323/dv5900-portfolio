@@ -136,10 +136,39 @@
 								populations all across the world. You want to use this data to help you and your peers understand what these trends look like. Using the provided .csv file above,
 								we can start populating our Power BI report with actual data.
 							</p>
-							<p>On the Power BI Desktop <b>Home</b> tab, select <b>Get Data</b> > <b>Text/CSV</b></p>
+							<p>On the Power BI Desktop <b>Home</b> tab, select <b>Get Data</b> > <b>Text/CSV.</b> From there, open the <b>2024Populations.csv</b> file. Allow a moment for the Power BI to uplaod the file.</p>
+							<div class="image-container">
+								<img src="images/power_bi_select_csv.png" alt="" />
+							</div>
+							<p><br>Another window will appear showing a preview of the data and a title <b>2024Populations.csv</b>. This window is just previewing the data and giving you
+								an idea as to what your data will look like in a Power BI table. At the top, you will see dropdown options for <b>File Origin, Delimiter</b>, and <b>Data Type Detection.</b>
+								We will leave those as default options and let Power BI auto detect what type of data it will process and the data type that each column has. 
+							</p>
+							<p>From here, we can either <b>Load</b> the data as is, or <b>Transform Data</b> to make changes in the table before we load it in the report.</p>
+							<p>We will go ahead and click <b>Transform Data</b> to look over the data that Power BI has uploaded and confirm that we are happy with the data types and the stucture that our data is in.</p>
+							<div class="image-container">
+								<img src="images/powerbi_load_or_transform_data.png" alt="" />
+							</div>
+							<p><br>When you select <b>Transform Data</b>, the Power Query Editor Launches, with a view of the table from our CSV file. The <b>Query Settings</b> pane will display on the right
+							but you can toggle it by selecting <b>Query Settings</b> on the <b>View</b> tab of the Power Query Editor.</p>
+							<div class="image-container">
+								<img src="images/powerbi_power_query_editor.png" alt="" />
+							</div><br>
 
 							<!--Processing Data-->
 							<h1>Data Transformation and Processing</h1>
+							<p>Now that we have added our data source, we change and shape the data to meet our needs. When you shape data in Power BI, you are providing
+								Power Query Editor step-by-step isntructions for adjusting the data while loading and presenting it. The original data source remains unaffected while
+								this view of the data is affected.
+							</p>
+							<p>Shaping and querying the data can mean <i>transforming</i> the data, such as renaming columns or tables, removing rows or column, changing data types, or reodering columns.
+							Each change that you do is captured sequentially by Power BI under the <b>Applied Steps</b> in the <b>Query Settings</b> pane. Everytime this query connects to this data source, the steps are carried
+							in the same order and in the same way, so the data is always in the same shape that you wanted it for. This shaping process occurs when you use the query in Power BI Desktop or when
+							someone uses the shared query.</p>
+							<p>You will notice that the <b>Applied Steps</b> in <b>Query Settings</b> already has some steps. You can click and highlight each step to see its effect in the Power Query Editor on the data.
+							The first step was to get the data source, which was uploaded from a CSV file. Once it uploaded the data, it promoted the headers that were in the CSV file to headers in the table itself.
+							And lastly, because we allowed the <b>Data Type Detection</b> to be based on the first 200 rows, Power Query Editor looked at the first 200 rows for each column and changed the data type for each column through automatic recognition.
+							For example, it turned the "unMember" column into True/False data type and the Populations to <b>Whole Numbers.</b> </p>
 
 							<!--Creating Visualizations and Dashboards-->
 							<h1>Creating Visualizations</h1>
