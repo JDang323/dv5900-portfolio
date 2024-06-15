@@ -2318,8 +2318,9 @@ input, select, textarea {
 	}
 
 		.image img {
-			border-radius: 4px;
+			/*border-radius: 4px;*/
 			display: block;
+			margin: 0 auto;
 		}
 
 		.image.left, .image.right {
@@ -2357,6 +2358,17 @@ input, select, textarea {
 			margin: 0 0 3em 0;
 			width: 100%;
 		}
+
+		.image-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.image-container img {
+			margin: 0 10px; /*spacing between images*/
+		}
+		
 
 			.image.main img {
 				width: 100%;
