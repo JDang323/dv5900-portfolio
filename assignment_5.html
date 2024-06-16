@@ -96,7 +96,7 @@
 								While Power BI is downloading, make sure to create a Microsoft Account. If you already have one, please sign in. This will allow you to publish your report later.
 							</blockquote>
 							<p>
-								Once you finish downloading and going through the install process, you should have Power BI correctly installed and ready to go!
+								Once you finish downloading and going through the install process, you should have Power BI correctly installed and ready to go! <b>Don't forget to sign in! This will be important later.</b>
 							</p>
 
 							<h2>First Time Launch</h2>
@@ -165,19 +165,158 @@
 							Each change that you do is captured sequentially by Power BI under the <b>Applied Steps</b> in the <b>Query Settings</b> pane. Everytime this query connects to this data source, the steps are carried
 							in the same order and in the same way, so the data is always in the same shape that you wanted it for. This shaping process occurs when you use the query in Power BI Desktop or when
 							someone uses the shared query.</p>
+
+							<!--Querying Steps-->
+							<h2>Querying Steps</h2>
 							<p>You will notice that the <b>Applied Steps</b> in <b>Query Settings</b> already has some steps. You can click and highlight each step to see its effect in the Power Query Editor on the data.
 							The first step was to get the data source, which was uploaded from a CSV file. Once it uploaded the data, it promoted the headers that were in the CSV file to headers in the table itself.
 							And lastly, because we allowed the <b>Data Type Detection</b> to be based on the first 200 rows, Power Query Editor looked at the first 200 rows for each column and changed the data type for each column through automatic recognition.
 							For example, it turned the "unMember" column into True/False data type and the Populations to <b>Whole Numbers.</b> </p>
+							<div class="image-container">
+								<img src="images/powerbi_applied_steps.png" alt="" />
+							</div><br>
+
+							<!--Data Types-->
+							<h2>Data Types</h2>
+							<p>If we need to change the data type of a column, select the column or column we want to change. You can either right-click a column header, and select <b>Change Type</b> and choose a new data type from the menu,
+							or drop down the list next to <b>Data Type</b> in the <b>Transform</b> group in the <b>Home</b> tab, and select a new data type. You can also change the data types by clicking the data type icon next to the Column Headers.</p>
+							<div class="image-container">
+								<img src="images/powerbi_change_data_type_query.png" alt="" />
+							</div><br>
+							<div class="image-container">
+								<img src="images/powerbi_change_data_type_home_row.png" alt="" />
+							</div><br>
+							<div class="image-container">
+								<img src="images/powerbi_change_data_type_icons.png" alt="" />
+							</div><br>
+
+							<p>In our example, we'll leave all of the data types alone because the data we provided is fairly clean and consistent that Power BI Desktop was able to automatically detect the intended data types that work well for the data.</p>
+							
+							<!--Data Transform-->
+							<h2>Transforming Data</h2>
+							<p>We will go ahead and transform the data. For example, let's go ahead and sort the data by having the <b>pop2030</b> column <b>Sort Descending</b>
+							and let's also delete the <b>unMember</b> column too by right-clicking the column header and clicking the appropriate option.</p>
+							<div class="image-container">
+								<img src="images/powerbi_sort_pop2030.png" alt="" />
+								<img src="images/powerbi_delete_unMember.png" alt="" />
+							</div><br>
+
+							<p>You will see in the <b>Applied Steps</b> in the <b>Query Settings</b> that your last 2 steps have been applied to the query. You sorted a row by sorting the <b>pop2030</b> by decending
+							and Removed Columns by deleting <b>unMember</b>. You can click back and forth between each step to see what happened to that data at that step.</p>
+							<div class="image-container">
+								<img src="images/powerbi_applied_steps_new.png" alt="" />
+							</div><br>
+
+							<p>Once you finish transforming your data and shaping it into a way that you want, you are ready to start building reports! Let's apply these changes in the <b>Power Query Editor</b> and load them
+							into Power Bi Desktop by selecting <b>Close & Apply</b> from the <b>Home</b> tab of the ribbon. If you want to keep the Power Query Editor open, you can just click <b>apply.</b> </p>
+							<div class="image-container">
+								<img src="images/powerbi_query_closeappy.png" alt="" />
+							</div>
 
 							<!--Creating Visualizations and Dashboards-->
-							<h1>Creating Visualizations</h1>
+							<h1>Creating Reports</h1>
+							<p>Now that you've finished transforming your data and applying your query, you are ready to build your report and create visuals! This is the <b>Report View</b> and it has the following main parts:</p>
+							<div class="image-container">
+								<img src="images/powerbi_reports_home.png" alt="" />
+							</div><br>
+							<ol>
+								<li>The tool ribbon at the top shows common tasks associated with reports and visualizations.</li>
+								<li>The canvas area in the middle which is where all visualzations will be created, editted and arranged.</li>
+								<li>The Pages tab at the bottom, which lets us add pages and navigate between them in the report.</li>
+								<li>The <b>Filters</b> pane, where the visualizations can get filtered based on the data present.</li>
+								<li>The <b>Visualizations</b> pane, where you can add, change, or customize visualizations, and apply drillthroughs.</li>
+								<li>The <b>Format</b> pane, where you design the report and visualizations</li>
+								<li>The <b>Data</b> pane, which shows the available data in the query from our data. You can drag any data onto the canvas, the <b>Filters</b> pane, or the <b>Visualizations</b> pane to create and modify visualizations.</li>
+							</ol>
+							<p> You can expand and collapse the <b>Filters</b>, <b>Visualizations</b>, and <b>Data</b> panes by selecting on the double arrows at the top of the panes. This gives you more space to work with.</p>
+							<div class="image-container">
+								<img src="images/powerbi_closing_panes.png" alt="" />
+							</div>
 
-							<!--How to Make Your Report Better-->
-							<h1>Enhacing your Report</h1>
+							<p>Let's create the first our first visualization! Just select any Data in the <b>Data</b> pane, or drag the data from the list onto the canvas. For example,
+							drag the <b>country</b> data from <b>2024Populations</b> onto the canvas and see what happens!</p>
+							<blockquote>You may run into an error with the map visual. If so, just follow the prompt on the visual.</blockquote>
+							<div class="image-container">
+								<img src="images/powerbi_map_error_fix.png" alt="" />
+							</div><br>
+							<div class="image-container">
+								<img src="images/powerbi_country_map_small.png" alt="" />
+							</div><br>
+
+							<p>You've create your first visual! Power BI Desktop is able to detect what kind of data is in a certain column and give you a map since all of the data in that column were countries!
+								Go ahead and enlarge the map for a better view. You will see blue little dots on the coutries in the world. The map is also interactive. You can move it around and zoom in as well!
+								Power BI has a strong system that has a lot of details in the maps. You can zoom in all the way down to the street names of streets!
+							</p>
+
+							<p>If you hover your mouse over any of the dots, it will give you a tooltip and tell you the name of the country.</p>
+							<div class="image-container">
+								<img src="images/powerbi_hover-Countries.png" alt="" />
+							</div><br>
+
+							<!--Customizing your visual-->
+							<h2>Customizing your Visual</h2>
+							<p>With your new map visualization selected, you'll see in the <b>Visualiations</b> pane different options for editting it. Let's click on the <b>Format Visual</b> icon.</p>
+							<div class="image-container">
+								<img src="images/powerbi_visualization_format.png" alt="" />
+							</div><br>
+							<p>From here, you have a lot of control for how the visualization works. These <b>Visual</b> options available will be different for different visuals such as bar charts or pie charts.
+							However, the <b>General</b> Format options will be the same for every visual. Go ahead and play around with it to see how different options affect the map. Try changing the title of the visual to <b>Country Population 2030 Prediction and change the bubble colors to green!</b></p>
+							
+							<p>Now your visual should look something like this.</p>
+							<div class="image-container">
+								<img src="images/powerbi_map.png" alt="" />
+							</div><br>
+
+							<p>Let's go ahead and add a little more data to the map. With the map selected, check the box next to <b>pop2030</b>. You will see in the <b>Build Visual</b> section in the <b>Visualization</b> pane that the Bubble Size gets populated with <b>Sum of pop2030</b>
+							This occurs because Power BI Automatically detects which it thinks is the best to show that data on the current visual. You can change it by dragging and dropping that box into other areas but let's leave it as it is in the best spot for our visual.</p>
+							<div class="image-container">
+								<img src="images/powerbi_map_bubbleSize.png" alt="" />
+							</div><br>
+
+							<h2>Tooltips</h2>
+							<p>If you try hovering over the new map with differnt size bubbles, you will see the tooltip has been updated with the data that we just added! Cool right? If we wanted
+								to have the tooltip to show that data but without the different bubble sizes, we would have to click and drag the <b>Sum of pop2030</b> into the <b>Tooltips</b> section of the <b>Visualizations</b> pane under <b>Build visual.</b>
+							</p>
+							<div class="image-container">
+								<img src="images/powerbi_map_bubbleSize_tooltip_swap.png" alt="" />
+							</div><br>
+
+							<p>Let's try adding more information to the tooltip! With the visualization selected again, click and drag <b>Rank</b>, <b>Density_2024</b>, and <b>2024WorldPercentage</b> into the <b>Tooltips</b> section on the <b>Visualiations</b> pane.</p>
+							<p>However, the name of the tooltip data isn't very visually pleasing with "Sum of...". Click on the arrow next to the field and rename it for this visual! Let's change it to <b>Rank</b>, <b>Density</b>, and <b>Percentage of World</b></p>
+							<div class="image-container">
+								<img src="images/powerbi_tooltip_rename.png" alt="" />
+							</div><br>
+							<p>In that same menu for the World Percentage, navigate to <b>Show Value as</b> and select <b>Percent of grand total</b>. This will represent that data as a percentage, which makes more sense.</p>
+							<div class="image-container">
+								<img src="images/powerbi_tooltip_valueas.png" alt="" />
+							</div><br>
+							<p>Now the tooltip should look like this, with all new data to give more information on the same visual.</p>
+							<div class="image-container">
+								<img src="images/powerbi_tooltip_new.png" alt="" />
+							</div><br>
 
 							<!--Publishing and Sharing-->
-							<h1>Publishing your New Report</h1>
+							<h1>Saving and Publishing your New Report</h1>
+
+							<!--Savings-->
+							<h2>Saving your Report</h2>
+							<p>Congradulations! You've made your own Power BI Desktop Visuals. Now, how can you share this with peers or colleagues? It is very simple! Let's give it a go.</p>
+							<p>Start by saving your masterpiece somewhere on your system and name it <b>Country Population 2030 Prediction</b>.</p>
+							<div class="image-container">
+								<img src="images/powerbi_savefile.png" alt="" />
+							</div><br>
+							
+							<!--Publishing-->
+							<h2>Publishing your Report</h2>
+							<p>To publish your report to Power BI, navigate to the <b>File</b> tab at the top left. From there, select <b>Publish > Publish to Power BI. From the <b>Publish to Power BI Window, select <b>My workspace</b> and click <b>Select.</b></p>
+							<div class="image-container">
+								<img src="images/powerbi_publishing.png" alt="" />
+								<img src="images/powerbi_publishing_window.png" alt="" />
+							</div><br>
+							<p>Give Power BI Desktop some time to process the request. Once finished, it will give you a status on whether it passed or not! Go ahead and click <b>Open [Report Name].</b></p>
+							<div class="image-container">
+								<img src="images/powerbi_publishing_success.png" alt="" />
+							</div>
 
 							<!--Conclusion-->
 							<h1>Conclusion</h1>
