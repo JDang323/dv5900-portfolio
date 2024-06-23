@@ -83,8 +83,18 @@
 								to provide a deeper understanding of how anime has evolved and what factors contribute to the growing appeal. Join me on this data-driven journey
 								to uncover the trends and stories behind your favorite anime series.
 							</p>
+							<p>
+								Today, we'll walk through different interactive visuals and dashboards that will help you understand the realm and trends of the anime world. First, I will introduce an anime dashboard as the face of the project that
+								gives the user a basic dashboard that will help give stats on specific animes. Afterwards, we will dive into looking at genre trends and how they've grown over the years. Next, we'll look at seasonal releases of anime
+								in hopes that it will help us understand why anime are released at certain times of the year. An important aspect when trying to understand the anime industry is to see what the audience and fans like. We'll look at some visuals
+								to identify trends. Along with this, we can look at how well an anime scores (how it is rated) vs. how many people set it as their favorite. Closing out the analysis would be looking at the Production Analysis of anime. This
+								involves looking at what Studio, Licensor, and Producer create the best anime and what the fans really love. With the help of data visualization, we can try take a step into the anime realm. All of the visualizations are interactive in some way.
+								Power BI allows for the creation of very dynamic and interactive Dashboards and visualizations.
+							</p>
 
-							<blockquote>Note that the data is not up to date. It was last updated 7/31/2023.</blockquote>
+							<blockquote>Note that the data is not up to date. It was last updated 7/31/2023. The dataset used for all the visuals is the <a href="https://www.kaggle.com/datasets/dbdmobile/myanimelist-dataset?select=anime-dataset-2023.csv">Anime Dataset 2023.</a></blockquote>
+
+							<blockquote>The core behiond this anime analysis is that the user can manipulate and adjust the visuals in multiple different ways in order to highlight different areas of interest.dddddddddddddddd</blockquote>
 
 							<!--Dashbaord-->
 							<h2>Anime Dashboard</h2>
@@ -93,16 +103,19 @@
 								As your filter change, the list at the bottom will update and provide you with a list of anime that fit under those categories. Common statistics are displayed on the right side of the screen for more information. The reset button is used
 								to clear all search and filters.
 							</p>
-							<iframe title="Anime Information Dashboard 06212024" width="1400" height="804" src="https://app.powerbi.com/view?r=eyJrIjoiYmI3ZmFkMjktNjk0Ni00NGZhLWJkYjMtYjYzZWQ5NDI0N2M4IiwidCI6Ijk2NWRlODFjLWZjOTgtNGM1My05OTAxLTQxYmQ5M2UyNmUwNiIsImMiOjN9" frameborder="0" allowFullScreen="true"></iframe>
+							<!--Dashboard - should I add more search features when it comes to rank/popularity/Favorites? or does that fall in audience ratings-->
+							<iframe title="Anime Information Dashboard" width="1400" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiMGEwZjE5ODQtNGYzOC00YWU0LWI5MTktMTZhMGZhMDZmNjMyIiwidCI6Ijk2NWRlODFjLWZjOTgtNGM1My05OTAxLTQxYmQ5M2UyNmUwNiIsImMiOjN9" frameborder="0" allowFullScreen="true"></iframe>
 							
 							<!--Anime Genres-->
-							<h2>Anime Genres</h2> 
-							<!--Bubble Chart Anime Genre Makeup-->
-							<div class='tableauPlaceholder' id='viz1718336424310' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;An&#47;AnimeDashboard_17183311218600&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='AnimeDashboard_17183311218600&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;An&#47;AnimeDashboard_17183311218600&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718336424310');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+							<br><br><br>
+							<h2>Anime Genres Trends</h2> 
 							<!--Power BI Animes released by year, with genres | Top Favorited Animated | Highest Ranked?-->
-
+							<iframe title="Anime Genre Power BI" width="1400" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiYjYzMGRmOTYtZGVkZS00YjMyLTk2NzctNTZjNDM3NzY2MjIyIiwidCI6Ijk2NWRlODFjLWZjOTgtNGM1My05OTAxLTQxYmQ5M2UyNmUwNiIsImMiOjN9" frameborder="0" allowFullScreen="true"></iframe>
+							<!--Bubble Chart Anime Genre Makeup Tableau-->
+							<div class='tableauPlaceholder' id='viz1718336424310' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;An&#47;AnimeDashboard_17183311218600&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='AnimeDashboard_17183311218600&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;An&#47;AnimeDashboard_17183311218600&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718336424310');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+							
 							<!--Seasonal Releases-->
-							<h2>Seasonal Release Analysis</h2>
+							<br><br><br><h2>Seasonal Release Analysis</h2>
 							<p>Often times, much like any other movie, animes will have a seasonal release date such as "Fall 2020" or "Summer 2021". It can get one person thinking - When do most animes get released? This interactive Power BI graph will be able to tell us.
 								When you change the range of the years or even choose a single year, you will find that Winter dominates the release seasons! There are a few reasons for this:
 							</p>
@@ -111,9 +124,21 @@
 								<li>Audience Preferences: People typically want to stay indoors during the colder months. Being indoors gives more opportunity to watch shows. There is a trend in TV shows watched and seasons.  </li>
 								<li>Production Timelines: Anime can take a while to plan and make. These plans are usually made earlier in the years, which naturally causese them to line up with a Winter Release.</li>
 							</ol>
-							<iframe title="Anime Release Patterns" width="1400" height="804" src="https://app.powerbi.com/view?r=eyJrIjoiM2VkNWViZDItYmMwMy00NGE3LWEyN2YtNjI3MWMxNGY5NjY3IiwidCI6Ijk2NWRlODFjLWZjOTgtNGM1My05OTAxLTQxYmQ5M2UyNmUwNiIsImMiOjN9&pageName=173bd600cb33ba62b5d1" frameborder="0" allowFullScreen="true"></iframe>
-							<!--Audience Ratings-->
+							<iframe title="Anime Release Patterns" width="1400" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiM2VkNWViZDItYmMwMy00NGE3LWEyN2YtNjI3MWMxNGY5NjY3IiwidCI6Ijk2NWRlODFjLWZjOTgtNGM1My05OTAxLTQxYmQ5M2UyNmUwNiIsImMiOjN9" frameborder="0" allowFullScreen="true"></iframe>
+							
+							<!--Audience Favorites-->
+							<br><br><br>
+							<h2>Audience Ratings and Favorites</h2>
+							<iframe title="Anime Fan Favorites" width="1400" height="804" src="https://app.powerbi.com/view?r=eyJrIjoiYjUwOWZlMGQtN2ExNS00YTMzLTg4NjgtM2JkZGJiNzlhMTNmIiwidCI6Ijk2NWRlODFjLWZjOTgtNGM1My05OTAxLTQxYmQ5M2UyNmUwNiIsImMiOjN9" frameborder="0" allowFullScreen="true"></iframe>
+							<!--Score vs. Favorite-->
+							<br><br><br><h2>Score vs. Favorites</h2>
+							<iframe title="Anime Score vs. Favorites" width="1400" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiNDAxMzJhOTUtNmI2MS00YjEwLTk4OTctNTQ4MjIxNmM4ZjI0IiwidCI6Ijk2NWRlODFjLWZjOTgtNGM1My05OTAxLTQxYmQ5M2UyNmUwNiIsImMiOjN9" frameborder="0" allowFullScreen="true"></iframe>
+
+							
+							
 							<!--Production Analysis-->
+							<br><br><br><h2>Production Analysis</h2>
+							<iframe title="Anime Production Insights" width="1400" height="800" src="https://app.powerbi.com/view?r=eyJrIjoiNDIwNDNlZGEtYTgwZS00MzgxLWE4ZjctZDdhYWQ1MjY2ZGQyIiwidCI6Ijk2NWRlODFjLWZjOTgtNGM1My05OTAxLTQxYmQ5M2UyNmUwNiIsImMiOjN9" frameborder="0" allowFullScreen="true"></iframe>
 
 							<!--Library of anime using the API-->
 							<br><br>
